@@ -2,7 +2,9 @@ def octact_identification(mod=5000):
  import csv
  import os
  import numpy as np
+
  os.system('cls')
+
  d1 = []    # declaring new list
  b1 = []    # declaring new list
  a1 = []    # declaring new list
@@ -14,6 +16,7 @@ def octact_identification(mod=5000):
 
  with open('octant_input.csv', 'r') as file:    #opening input file.
   reader = csv.reader(file)
+  
   t = 0
   for row in reader:
    if (t == 0):
@@ -33,6 +36,7 @@ def octact_identification(mod=5000):
  with open('octant_input.csv', 'r') as file: # reopening input file
   reader = csv.reader(file)
   k=0
+
   for row in reader:
    if (k==0):
     k=k+1
@@ -48,11 +52,17 @@ def octact_identification(mod=5000):
    l=l+1
   rows=l        # rows are number of rows
   rows=rows-1
+
+    # printing rows...
+  
   print(rows)
+
  with open('octant_input.csv', 'r') as file:    #opening file for octants..
   reader = csv.reader(file)  
  	
-  for l in range(rows):     #finding the octants using loop
+    #finding the octants using loop
+
+  for l in range(rows):     
     
    if (l<rows-1):
     if ((a2[l]>=0) and (b2[l]>=0) and (c2[l]>=0 )):
@@ -85,7 +95,10 @@ def octact_identification(mod=5000):
   ct7=0         # counting of octant 4
   ct8=0         # counting of octant -4	 
 
-  for l in range(rows):     #   using loop to get the octant
+  for l in range(rows):
+
+    #   using loop to get the octant
+
    if (l<rows-1):
     if (octants[l]==1):
      ct1=ct1+1
@@ -119,6 +132,7 @@ def octact_identification(mod=5000):
   reader = csv.reader(file)
 
   #count of octants in mod range...
+
   l=0
   t=0
   octs_1=0
@@ -172,7 +186,9 @@ def octact_identification(mod=5000):
    octs_8=0
 
  print(octants_ct1)
+
     #   opening output file to write...
+
  with open('octant_output.csv','w',newline="") as file:
   writer=csv.writer(file)
   writer.writerow(["Time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant","","OctantID","+1","-1","+2","-2","+3","-3","+4","-4"])
@@ -198,12 +214,13 @@ def octact_identification(mod=5000):
     else:
      z=t*mod	
      y=(t+1)*mod-1
-     y=str(z)+"-"+str(y)		 
+     y=str(z)+"-"+str(y)
+
      writer.writerow([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"",y,octants_ct1[x-2],octants_ct2[x-2],octants_ct3[x-2],octants_ct4[x-2],octants_ct5[x-2],octants_ct6[x-2],octants_ct7[x-2],octants_ct8[x-2]])	 
      t=t+1
    
    else:
-    writer.writerow([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","","","","","","","",""])			 
+    writer.writerow([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","","","","","","","",""])		 
 
 mod = 5000          #Input given here
 
