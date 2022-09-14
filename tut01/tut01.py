@@ -16,7 +16,7 @@ def octact_identification(mod=5000):
 
  with open('octant_input.csv', 'r') as file:    #opening input file.
   reader = csv.reader(file)
-  
+
   t = 0
   for row in reader:
    if (t == 0):
@@ -222,6 +222,6 @@ def octact_identification(mod=5000):
    else:
     writer.writerow([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","","","","","","","",""])		 
 
-mod = 5000          #Input given here
+mod = 6000          #Input given here
 
 octact_identification(mod)
