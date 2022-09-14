@@ -78,4 +78,46 @@ def octact_identification(mod=5000):
   ct6=0         # counting of octant -3
   ct7=0         # counting of octant 4
   ct8=0         # counting of octant -4	 
+  for l in range(rows):     #   using loop to get the octant
+   if (l<rows-1):
+    if (octants[l]==1):
+     ct1=ct1+1
+    elif(octants[l]==-1):
+     ct2=ct2+1
+    elif(octants[l]==2):
+     ct3=ct3+1
+    elif(octants[l]==-2):
+     ct4=ct4+1
+    elif(octants[l]==3):
+     ct5=ct5+1
+    elif(octants[l]==-3):
+     ct6=ct6+1    
+    elif(octants[l]==4):
+     ct7=ct7+1
+    else:
+     ct8=ct8+1
+    l=l+1
+    # Making lists of different octants in mod range
+ octants_ct1=[]      
+ octants_ct2=[] 
+ octants_ct3=[]     
+ octants_ct4=[]
+ octants_ct5=[]
+ octants_ct6=[] 
+ octants_ct7=[]
+ octants_ct8=[] 
+ with open('octant_input.csv', 'r') as file:
+  reader = csv.reader(file)
+
+  #count of octants in mod range...
+  l=0
+  t=0
+  octs_1=0
+  octs_2=0
+  octs_3=0
+  octs_4=0
+  octs_5=0
+  octs_6=0
+  octs_7=0
+  octs_8=0
   
