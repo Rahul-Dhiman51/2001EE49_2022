@@ -188,3 +188,23 @@ def octact_identification(mod=5000):
    
    elif(x>=2 and x<2+k):
     
+    if(x==1+k):
+     z=t*mod 	
+     y=(t+1)*mod
+     y=str(z)+"-"+str(rows)		 
+     writer.writerow([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"",y,octants_ct1[x-2],octants_ct2[x-2],octants_ct3[x-2],octants_ct4[x-2],octants_ct5[x-2],octants_ct6[x-2],octants_ct7[x-2],octants_ct8[x-2]])	 
+     t=t+1
+    
+    else:
+     z=t*mod	
+     y=(t+1)*mod-1
+     y=str(z)+"-"+str(y)		 
+     writer.writerow([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"",y,octants_ct1[x-2],octants_ct2[x-2],octants_ct3[x-2],octants_ct4[x-2],octants_ct5[x-2],octants_ct6[x-2],octants_ct7[x-2],octants_ct8[x-2]])	 
+     t=t+1
+   
+   else:
+    writer.writerow([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","","","","","","","",""])			 
+
+mod = 5000          #Input given here
+
+octact_identification(mod)
