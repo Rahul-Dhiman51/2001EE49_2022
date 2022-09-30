@@ -164,13 +164,13 @@ def octant_transition_count(mod=5000):
    if j+f<=num_1-3:
     if octants[j+f]==1 and octants[j+f+1]==1 :
       value_list1[0]=value_list1[0]+1   # This will keep on incresing value after each transition in different intervals.
-      overall_trans[0][0]=overall_trans[0][0]+1
+      overall_trans[0][0]=overall_trans[0][0]+1   #For all overall transition matrix
     elif octants[j+f]==1 and octants[j+f+1]==-1:
-      value_list1[1]=value_list1[1]+1    
-      overall_trans[0][1]=overall_trans[0][1]+1
+      value_list1[1]=value_list1[1]+1    # This will keep on incresing value after each transition in different intervals.
+      overall_trans[0][1]=overall_trans[0][1]+1   #For all overall transition matrix
     elif octants[j+f]==1 and octants[j+f+1]==2:
-      value_list1[2]=value_list1[2]+1
-      overall_trans[0][2]=overall_trans[0][2]+1
+      value_list1[2]=value_list1[2]+1     # This will keep on incresing value after each transition in different intervals.
+      overall_trans[0][2]=overall_trans[0][2]+1   #For all overall transition matrix
     elif octants[j+f]==1 and octants[j+f+1]==-2:
       value_list1[3]=value_list1[3]+1
       overall_trans[0][3]=overall_trans[0][3]+1
@@ -359,9 +359,12 @@ def octant_transition_count(mod=5000):
       overall_trans[7][6]=overall_trans[7][6]+1
     elif octants[j+f]==-4 and octants[j+1+f]==-4:
       value_list8[7]=value_list8[7]+1  
-      overall_trans[7][7]=overall_trans[7][7]+1    
+      overall_trans[7][7]=overall_trans[7][7]+1
+
   if m==0 :
+
     final_mat.append(overall_trans)
+    # Appending eight 1-d matrix in mat_2d 2-d matrix
   mat_2d.append(value_list1)  
   mat_2d.append(value_list2) 
   mat_2d.append(value_list3)
@@ -371,8 +374,65 @@ def octant_transition_count(mod=5000):
   mat_2d.append(value_list7)
   mat_2d.append(value_list8)
   grid=mat_2d.copy()
-  final_mat.append(grid)
+
+  final_mat.append(grid)      # appending mat_2d in final_mat
+
   mat_2d.clear()
  h = ["+1","-1","+2","-2","+3","-3","+4","-4"]
 
- 
+ from openpyxl import Workbook 
+ book=Workbook()
+ spreadsheet= book.active    
+ rows=[] 
+ rows.append(["Time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant","","OctantID","+1","-1","+2","-2","+3","-3","+4","-4"])
+ j=0
+ a=0
+ b=0
+ for q in range(num_1-2):
+  if(q==0):
+   rows.append([d1[q],a1[q],b1[q],c1[q],a_mean_value,b_mean_value,c_mean_value,a2[q],b2[q],c2[q],octants[q],"","Overall count",ct1,ct2,ct3,ct4,ct5,ct6,ct7,ct8])
+  elif(q==1):
+   st="mod "+str(mod)		
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"User input",st,"","","","","","","",""])
+  elif(q>=2 and q<2+k):
+   if(q==1+k):# it will work ont=ly if q=1+k
+    x=j*mod 	
+    z=(j+1)*mod
+    st=str(x)+"-"+str(num_1-2)		 
+    rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"",st,octants_ct1[q-2],octants_ct2[q-2],octants_ct3[q-2],octants_ct4[q-2],octants_ct5[q-2],octants_ct6[q-2],octants_ct7[q-2],octants_ct8[q-2]])	 
+    rows.append([d1[q],a1[q],b1[q],c1[q],a_mean_value,b_mean_value,c_mean_value,a2[q],b2[q],c2[q],octants[q],"","Verified",ct1,ct2,ct3,ct4,ct5,ct6,ct7,ct8])
+    j=j+1
+   else:
+    x=j*mod	
+    z=(j+1)*mod-1
+    st=str(x)+"-"+str(z)		 
+    rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"",st,octants_ct1[q-2],octants_ct2[q-2],octants_ct3[q-2],octants_ct4[q-2],octants_ct5[q-2],octants_ct6[q-2],octants_ct7[q-2],octants_ct8[q-2]])	 
+    j=j+1
+  elif (q-(2+k))%9==0 and q<9*(k+1)+2+k:
+    rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","","","","","","","","",""])
+    rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","","","","","","","","",""])
+    if q ==2+k:
+     rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","Overall transition Count","","","","","","","",""])
+     rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","","To","","","","","","",""])
+    else:
+     rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","Mod transition Count","","","","","","","",""])
+     rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"",str(((q-(2+k))//9-1)*mod)+"-"+str(np.minimum(((q-(2+k))//9)*mod,num_1-2)),"To","","","","","","",""])
+    rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","Count","+1","-1","+2","-2","+3","-3","+4","-4"])
+  elif q<9*(k+1)+(2+k):
+   if (q-(2+k))%9==1:
+    rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"From",h[((q-(2+k))%9)-1],final_mat[b][a][0],final_mat[b][a][1],final_mat[b][a][2],final_mat[b][a][3],final_mat[b][a][4],final_mat[b][a][5],final_mat[b][a][6],final_mat[b][a][7]])	
+   else:
+    rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"",h[((q-(2+k))%9)-1],final_mat[b][a][0],final_mat[b][a][1],final_mat[b][a][2],final_mat[b][a][3],final_mat[b][a][4],final_mat[b][a][5],final_mat[b][a][6],final_mat[b][a][7]])
+   a=a+1
+   if a==8:
+    a=0
+    b=b+1
+  else:
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","","","","","","","",""])
+
+ for i in rows:
+  spreadsheet.append(i)
+ book.save("output_octant_transition_identify.xlsx")
+
+mod=5000
+octant_transition_count(mod)
