@@ -380,6 +380,7 @@ def octant_transition_count(mod=5000):
   mat_2d.clear()
  h = ["+1","-1","+2","-2","+3","-3","+4","-4"]
 
+  # writing code for printing the output......
  from openpyxl import Workbook 
  book=Workbook()
  spreadsheet= book.active    
@@ -395,7 +396,7 @@ def octant_transition_count(mod=5000):
    st="mod "+str(mod)		
    rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"User input",st,"","","","","","","",""])
   elif(q>=2 and q<2+k):
-   if(q==1+k):# it will work ont=ly if q=1+k
+   if(q==1+k):
     x=j*mod 	
     z=(j+1)*mod
     st=str(x)+"-"+str(num_1-2)		 
@@ -434,5 +435,5 @@ def octant_transition_count(mod=5000):
   spreadsheet.append(i)
  book.save("output_octant_transition_identify.xlsx")
 
-mod=5000
+mod=5000    # Input given here
 octant_transition_count(mod)
