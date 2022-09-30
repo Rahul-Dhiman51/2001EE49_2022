@@ -435,5 +435,5 @@ def octant_transition_count(mod=5000):
   spreadsheet.append(i)
  book.save("output_octant_transition_identify.xlsx")
 
-mod=4000    # Input given here
+mod=5000    # Input given here
 octant_transition_count(mod)
