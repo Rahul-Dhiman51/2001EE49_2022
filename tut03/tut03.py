@@ -53,6 +53,33 @@ def octant_longest_subsequence_count():
   else:
    octants.append(-3)
 
+ lss1=0         # storing the longest subsequence value of octant 1
+ lss2=0         # storing the longest subsequence value of octant -1
+ lss3=0         # storing the longest subsequence value of octant 2
+ lss4=0         # storing the longest subsequence value of octant -2
+ lss5=0         # storing the longest subsequence value of octant 3
+ lss6=0         # storing the longest subsequence value of octant -3
+ lss7=0         # storing the longest subsequence value of octant 4
+ lss8=0         # storing the longest subsequence value of octant -4
+
+ lssl1=0        # for storing length of the longest subsequence length for octant 1
+ lssl2=0        # for storing length of the longest subsequence length for octant -1
+ lssl3=0        # for storing length of the longest subsequence length for octant 2
+ lssl4=0        # for storing length of the longest subsequence length for octant -2
+ lssl5=0        # for storing length of the longest subsequence length for octant 3
+ lssl6=0        # for storing length of the longest subsequence length for octant -3
+ lssl7=0        # for storing length of the longest subsequence length for octanlss8 4
+ lssl8=0        # for storing length of the longest subsequence length for octant -4
+
+ ct1=0          # counting of octant 1
+ ct2=0          # counting of octant -1
+ ct3=0          # counting of octant 2
+ ct4=0          # counting of octant -2
+ ct5=0          # counting of octant 3
+ ct6=0          # counting of octant -3
+ ct7=0          # counting of octant 4
+ ct8=0          # counting of octant -4
+
 
 
 
