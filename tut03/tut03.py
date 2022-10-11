@@ -186,6 +186,108 @@ def octant_longest_subsequence_count():
 
       # using for loop to get the count and length of longest subsequence for octant 3
 
+ for i in range(0,num_1-1):
+  if octants[i]==3 :
+   lss5=lss5+1
+   if i==num_1-2:
+    if lss5>lssl5:
+     lssl5=lss5
+     lss5=0
+     ct5=1
+    elif lssl5>lss5:
+     lss5=0
+    else:
+     lss5=0
+     ct5=ct5+1 
+  else:
+    if lss5>lssl5:
+     lssl5=lss5
+     lss5=0
+     ct5=1
+    elif lssl5>lss5:
+     lss5=0
+    else:
+     lss5=0
+     ct5=ct5+1    
+
+
+        # using for loop to get the count and length of longest subsequence for octant -3
+
+ for i in range(0,num_1-1):
+  if octants[i]==-3 :
+   lss6=lss6+1
+   if i==num_1-2:
+    if lss6>lssl1:
+     lssl6=lss6
+     lss6=0
+     ct6=1
+    elif lssl6>lss6:
+     lss6=0
+    else:
+     lss6=0
+     ct6=ct6+1 
+  else:
+    if lss6>lssl6:
+     lssl6=lss6
+     lss6=0
+     ct6=1
+    elif lssl6>lss6:
+     lss6=0
+    else:
+     lss6=0
+     ct6=ct6+1    
+
+        # using for loop to get the count and length of longest subsequence for octant 4
+ 
+ for i in range(0,num_1-1):
+  if octants[i]==4 :
+   lss7=lss7+1
+   if i==num_1-2:
+    if lss7>lssl7:
+     lssl7=lss7
+     lss7=0
+     ct7=1
+    elif lssl7>lss7:
+     lss7=0
+    else:
+     lss7=0
+     ct7=ct7+1 
+  else:
+    if lss7>lssl7:
+     lssl7=lss7
+     lss7=0
+     ct7=1
+    elif lssl7>lss7:
+     lss7=0
+    else:
+     lss7=0
+     ct7=ct7+1
+
+     # using for loop to get the count and length of longest subsequence for octant -4
+
+ for i in range(0,num_1-1):
+  if octants[i]==-4 :
+   lss8=lss8+1
+   if i==num_1-2:
+    if lss8>lssl1:
+     lssl8=lss8
+     lss8=0
+     ct8=1
+    elif lssl8>lss8:
+     lss8=0
+    else:
+     lss8=0
+     ct8=ct8+1 
+  else:
+    if lss8>lssl8:
+     lssl8=lss8
+     lss8=0
+     ct8=1
+    elif lssl8>lss8:
+     lss8=0
+    else:
+     lss8=0
+     ct8=ct8+1    
 
 
 
