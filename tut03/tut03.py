@@ -288,7 +288,40 @@ def octant_longest_subsequence_count():
     else:
      lss8=0
      ct8=ct8+1    
+  
+#  print(lssl8,ct8)
 
+ from openpyxl import Workbook 
+ book=Workbook()
+ spreadsheet= book.active    
+ rows=[] 
+ rows.append(["Time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant"])
+ 
+ for q in range(num_1-2):
+  if(q==0):
+   rows.append([d1[q],a1[q],b1[q],c1[q],a_mean_value,b_mean_value,c_mean_value,a2[q],b2[q],c2[q],octants[q],"","Octant","Longest Susequence Length","Count"])
+  elif q==1:  
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","1",lssl1,ct1])
+  elif q==2:  
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","-1",lssl2,ct2])
+  elif q==3:  
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","2",lssl3,ct3])
+  elif q==4:  
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","-2",lssl4,ct4]) 
+  elif q==5:  
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","3",lssl5,ct5])
+  elif q==6:  
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","-3",lssl6,ct6])
+  elif q==7:  
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","4",lssl7,ct7])
+  elif q==8:  
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q],"","-4",lssl8,ct8])
+  else:
+   rows.append([d1[q],a1[q],b1[q],c1[q],"","","",a2[q],b2[q],c2[q],octants[q]])
+
+ for i in rows:
+  spreadsheet.append(i)
+ book.save("output_octant_longest_subsequence.xlsx")
 
 
 octant_longest_subsequence_count()
