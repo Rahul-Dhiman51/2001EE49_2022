@@ -78,6 +78,46 @@ def octant_longest_subsequence_count_with_range():
  ct7=0          # counting of octant 4
  ct8=0          # counting of octant -4
 
+  # using for loop to get the count and length of longest subsequence for octant 1
+ for i in range(0,num_1-1):
+  if octants[i]==1 :
+   lss1=lss1+1
+   if i==num_1-2:
+    if lss1>lssl1:
+     lssl1=lss1
+     lss1=0
+     ct1=1
+    elif lssl1>lss1:
+     lss1=0
+    else:
+     lss1=0
+     ct1=ct1+1 
+  else:
+    if lss1>lssl1:
+     lssl1=lss1
+     lss1=0
+     ct1=1
+    elif lssl1>lss1:
+     lss1=0
+    else:
+     lss1=0
+     ct1=ct1+1
+
+ count1=0 
+
+ list1=[]
+ for i in range(0,num_1-1):  
+  if octants[i]==1:
+   if count1==0: 
+    list_1=d1[i] 
+   count1=count1+1
+  else:
+   count1=0 
+  if count1==lssl1:
+   list1.append(list_1); 
+   count1=0
+
+#  print(list1)
 
 
 
