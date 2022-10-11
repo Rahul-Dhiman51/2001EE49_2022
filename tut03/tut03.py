@@ -80,6 +80,112 @@ def octant_longest_subsequence_count():
  ct7=0          # counting of octant 4
  ct8=0          # counting of octant -4
 
+  # using for loop to get the count and length of longest subsequence for octant 1
+ for i in range(0,num_1-1):
+  if octants[i]==1 :
+   lss1=lss1+1
+   if i==num_1-2:
+    if lss1>lssl1:
+     lssl1=lss1
+     lss1=0
+     ct1=1
+    elif lssl1>lss1:
+     lss1=0
+    else:
+     lss1=0
+     ct1=ct1+1 
+  else:
+    if lss1>lssl1:
+     lssl1=lss1
+     lss1=0
+     ct1=1
+    elif lssl1>lss1:
+     lss1=0
+    else:
+     lss1=0
+     ct1=ct1+1
+ 
+      # using for loop to get the count and length of longest subsequence for octant -1
+ 
+ for i in range(0,num_1-1):
+  if octants[i]==-1 :
+   lss2=lss2+1
+   if i==num_1-2:
+    if lss2>lssl2:
+     lssl2=lss2
+     lss2=0
+     ct2=1
+    elif lssl2>lss2:
+     lss2=0
+    else:
+     lss2=0
+     ct2=ct2+1 
+  else:
+    if lss2>lssl2:
+     lssl2=lss2
+     lss2=0
+     ct2=1
+    elif lssl2>lss2:
+     lss2=0
+    else:
+     lss2=0
+     ct2=ct2+1   
+
+      # using for loop to get the count and length of longest subsequence for octant 2
+
+ for i in range(0,num_1-1):
+  if octants[i]==2 :
+   lss3=lss3+1
+   if i==num_1-2:
+    if lss3>lssl3:
+     lssl3=lss3
+     lss3=0
+     ct3=1
+    elif lssl3>lss3:
+     lss3=0
+    else:
+     lss3=0
+     ct3=ct3+1 
+  else:
+    if lss3>lssl3:
+     lssl3=lss3
+     lss3=0
+     ct3=1
+    elif lssl3>lss3:
+     lss3=0
+    else:
+     lss3=0
+     ct3=ct3+1    
+
+      # using for loop to get the count and length of longest subsequence for octant -2
+ 
+ for i in range(0,num_1-1):
+  if octants[i]==-2 :
+   lss4=lss4+1
+   if i==num_1-2:
+    if lss4>lssl4:
+     lssl4=lss4
+     lss4=0
+     ct4=1
+    elif lssl4>lss4:
+     lss4=0
+    else:
+     lss4=0
+     ct4=ct4+1 
+  else:
+    if lss4>lssl4:
+     lssl4=lss4
+     lss4=0
+     ct4=1 
+    elif lssl4>lss4:
+     lss4=0
+    else:
+     lss4=0
+     ct4=ct4+1    
+     
+
+      # using for loop to get the count and length of longest subsequence for octant 3
+
 
 
 
