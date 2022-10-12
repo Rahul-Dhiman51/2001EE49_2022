@@ -417,110 +417,110 @@ def octant_longest_subsequence_count_with_range():
 
 #  print(list8)
 
- a1=[]
- a1.append("Octant")
- a1.append("1")
- a1.append("Time")
+ m1=[]
+ m1.append("Octant")
+ m1.append("1")
+ m1.append("Time")
  for i in range(0,ct1):
-  a1.append("")
- a1.append("-1")
- a1.append("Time")
+  m1.append("")
+ m1.append("-1")
+ m1.append("Time")
  for i in range(0,ct2):
-  a1.append("")
- a1.append("2")
- a1.append("Time")
+  m1.append("")
+ m1.append("2")
+ m1.append("Time")
  for i in range(0,ct3):
-  a1.append("")
- a1.append("-2")
- a1.append("Time")
+  m1.append("")
+ m1.append("-2")
+ m1.append("Time")
  for i in range(0,ct4):
-  a1.append("")
- a1.append("3")
- a1.append("Time")
+  m1.append("")
+ m1.append("3")
+ m1.append("Time")
  for i in range(0,ct5):
-  a1.append("")
- a1.append("-3")
- a1.append("Time")
+  m1.append("")
+ m1.append("-3")
+ m1.append("Time")
  for i in range(0,ct6):
-  a1.append("")
- a1.append("4")
- a1.append("Time")
+  m1.append("")
+ m1.append("4")
+ m1.append("Time")
  for i in range(0,ct7):
-  a1.append("")
- a1.append("-4")
- a1.append("Time")
+  m1.append("")
+ m1.append("-4")
+ m1.append("Time")
  for i in range(0,ct8):
-  a1.append("")
- v=len(a1)
- b1=[]
- b1.append("Longest Subsequence Length")
- b1.append(lssl1)
- b1.append("From")
+  m1.append("")
+ v=len(m1)
+ n1=[]
+ n1.append("Longest Subsequence Length")
+ n1.append(lssl1)
+ n1.append("From")
  for i in range(0,ct1):
-  b1.append(list1[i])
- b1.append(lssl2)
- b1.append("From")
+  n1.append(list1[i])
+ n1.append(lssl2)
+ n1.append("From")
  for i in range(0,ct2):
-  b1.append(list2[i])
- b1.append(lssl3)
- b1.append("From")
+  n1.append(list2[i])
+ n1.append(lssl3)
+ n1.append("From")
  for i in range(0,ct3):
-  b1.append(list3[i])
- b1.append(lssl4)
- b1.append("From")
+  n1.append(list3[i])
+ n1.append(lssl4)
+ n1.append("From")
  for i in range(0,ct4):
-  b1.append(list4[i])
- b1.append(lssl5)
- b1.append("From")
+  n1.append(list4[i])
+ n1.append(lssl5)
+ n1.append("From")
  for i in range(0,ct5):
-  b1.append(list5[i])
- b1.append(lssl6)
- b1.append("From")
+  n1.append(list5[i])
+ n1.append(lssl6)
+ n1.append("From")
  for i in range(0,ct6):
-  b1.append(list6[i])
- b1.append(lssl7)
- b1.append("From")
+  n1.append(list6[i])
+ n1.append(lssl7)
+ n1.append("From")
  for i in range(0,ct7):
-  b1.append(list7[i])
- b1.append(lssl8)
- b1.append("From")
+  n1.append(list7[i])
+ n1.append(lssl8)
+ n1.append("From")
  for i in range(0,ct8):
-  b1.append(list8[i])
+  n1.append(list8[i])
 
- d1=[]
- d1.append("Count")
- d1.append(ct1)
- d1.append("To")
+ p1=[]
+ p1.append("Count")
+ p1.append(ct1)
+ p1.append("To")
  for i in range(0,ct1):
-  d1.append(list1[i]+ 0.01*(lssl1-1))
- d1.append(ct2)
- d1.append("To")
+  p1.append(list1[i]+ 0.01*(lssl1-1))
+ p1.append(ct2)
+ p1.append("To")
  for i in range(0,ct2):
-  d1.append(list2[i]+ 0.01*(lssl2-1))
- d1.append(ct3)
- d1.append("To")
+  p1.append(list2[i]+ 0.01*(lssl2-1))
+ p1.append(ct3)
+ p1.append("To")
  for i in range(0,ct3):
-  d1.append(list3[i]+ 0.01*(lssl3-1))
- d1.append(ct4)
- d1.append("To")
+  p1.append(list3[i]+ 0.01*(lssl3-1))
+ p1.append(ct4)
+ p1.append("To")
  for i in range(0,ct4):
-  d1.append(list4[i]+ 0.01*(lssl4-1))
- d1.append(ct5)
- d1.append("To")
+  p1.append(list4[i]+ 0.01*(lssl4-1))
+ p1.append(ct5)
+ p1.append("To")
  for i in range(0,ct5):
-  d1.append(list5[i]+ 0.01*(lssl5-1))
- d1.append(ct6)
- d1.append("To")
+  p1.append(list5[i]+ 0.01*(lssl5-1))
+ p1.append(ct6)
+ p1.append("To")
  for i in range(0,ct6):
-  d1.append(list6[i]+ 0.01*(lssl6-1))
- d1.append(ct7)
- d1.append("To")
+  p1.append(list6[i]+ 0.01*(lssl6-1))
+ p1.append(ct7)
+ p1.append("To")
  for i in range(0,ct7):
-  d1.append(list7[i]+ 0.01*(lssl7-1))
- d1.append(ct8)
- d1.append("To")
+  p1.append(list7[i]+ 0.01*(lssl7-1))
+ p1.append(ct8)
+ p1.append("To")
  for i in range(0,ct8):
-  d1.append(list8[i]+ 0.01*(lssl8-1))
+  p1.append(list8[i]+ 0.01*(lssl8-1))
 
  from openpyxl import Workbook 
  book=Workbook()
@@ -533,31 +533,33 @@ def octant_longest_subsequence_count_with_range():
    rows.append([d1[x],a1[x],b1[x],c1[x],a_mean_value,b_mean_value,c_mean_value,a2[x],b2[x],c2[x],octants[x],"","Octant","Longest Susequence Length","Count","","Octant","Longest Susequence Length","Count"])
     #Writing data in output xlsx file for octant 1
   elif x==1:
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","1",lssl1,ct1,"",a1[x],b1[x],d1[x]])
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","1",lssl1,ct1,"",m1[x],n1[x],p1[x]])
     #Writing data in output xlsx file for octant -1
   elif x==2:   
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","-1",lssl2,ct2,"",a1[x],b1[x],d1[x]])
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","-1",lssl2,ct2,"",m1[x],n1[x],p1[x]])
     #Writing data in output xlsx file for octant 2
   elif x==3: 
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","2",lssl3,ct3,"",a1[x],b1[x],d1[x]])
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","2",lssl3,ct3,"",m1[x],n1[x],p1[x]])
     #Writing data in output xlsx file for octant -2 
   elif x==4: 
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","-2",lssl4,ct4,"",a1[x],b1[x],d1[x]]) 
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","-2",lssl4,ct4,"",m1[x],n1[x],p1[x]]) 
     #Writing data in output xlsx file for octant 3
   elif x==5:  
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","3",lssl5,ct5,"",a1[x],b1[x],d1[x]])
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","3",lssl5,ct5,"",m1[x],n1[x],p1[x]])
     #Writing data in output xlsx file for octant -3
   elif x==6:  
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","-3",lssl6,ct6,"",a1[x],b1[x],d1[x]])
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","-3",lssl6,ct6,"",m1[x],n1[x],p1[x]])
     #Writing data in output xlsx file for octant 4 
   elif x==7: 
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","4",lssl7,ct7,"",a1[x],b1[x],d1[x]])
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","4",lssl7,ct7,"",m1[x],n1[x],p1[x]])
     #Writing data in output xlsx file for octant -4
   elif x==8: 
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","-4",lssl8,ct8,"",a1[x],b1[x],d1[x]])
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","-4",lssl8,ct8,"",m1[x],n1[x],p1[x]])
   elif x<v:
-   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","","","",a1[x],b1[x],d1[x]])
-
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","","","",m1[x],n1[x],p1[x]])
+    #writing remaining data in xlsx file
+  else: 
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x]])
 
  for i in rows:
   spreadsheet.append(i)
