@@ -85,8 +85,57 @@ def octant_range_names(mod=5000):
 
     
     octant_name_id_mapping = {"1":"Internal outward interaction", "-1":"External outward interaction", "2":"External Ejection", "-2":"Internal Ejection", "3":"External inward interaction", "-3":"Internal inward interaction", "4":"Internal sweep", "-4":"External sweep"}
+ ranks=[]
+ rank1_idname=[]
+ reqrd=[]
+ reqrd.append([ct1,1])
+ reqrd.append([ct2,2])
+ reqrd.append([ct3,3])
+ reqrd.append([ct4,4])
+ reqrd.append([ct5,5])
+ reqrd.append([ct6,6])
+ reqrd.append([ct7,7])
+ reqrd.append([ct8,8]) 
 
+ reqrd.sort()
 
+ reqrd_ranks=[0,0,0,0,0,0,0,0]
+ reqrd_ranks[reqrd[0][1]-1]=8
+ reqrd_ranks[reqrd[1][1]-1]=7
+ reqrd_ranks[reqrd[2][1]-1]=6
+ reqrd_ranks[reqrd[3][1]-1]=5
+ reqrd_ranks[reqrd[4][1]-1]=4
+ reqrd_ranks[reqrd[5][1]-1]=3
+ reqrd_ranks[reqrd[6][1]-1]=2
+ reqrd_ranks[reqrd[7][1]-1]=1
+ ranks.append(reqrd_ranks)
+
+ rank_idname=[]
+
+ if reqrd_ranks[0]==1:
+  rank_idname=[1,"Internal outward Interaction"]
+  rank1_idname.append(rank_idname)
+ elif reqrd_ranks[1]==1:
+  rank_idname=[-1,"External outward Interaction"]
+  rank1_idname.append(rank_idname)
+ elif reqrd_ranks[2]==1:
+  rank_idname=[2,"External Ejection"]
+  rank1_idname.append(rank_idname) 
+ elif reqrd_ranks[3]==1:
+  rank_idname=[-2,"Internal Ejection"]
+  rank1_idname.append(rank_idname) 
+ elif reqrd_ranks[4]==1:
+  rank_idname=[3,"External inward Interaction"]
+  rank1_idname.append(rank_idname) 
+ elif reqrd_ranks[5]==1:
+  rank_idname=[-3,"Internal inward Interaction"]
+  rank1_idname.append(rank_idname) 
+ elif reqrd_ranks[6]==1:
+  rank_idname=[4,"Internal Sweep"]
+  rank1_idname.append(rank_idname) 
+ elif reqrd_ranks[7]==1:
+  rank_idname=[-4,"External Sweep"]
+  rank1_idname.append(rank_idname) 
 
 
 
