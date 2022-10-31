@@ -83,8 +83,6 @@ def octant_range_names(mod=5000):
   else:
    ct8=ct8+1
 
-    
-    octant_name_id_mapping = {"1":"Internal outward interaction", "-1":"External outward interaction", "2":"External Ejection", "-2":"Internal Ejection", "3":"External inward interaction", "-3":"Internal inward interaction", "4":"Internal sweep", "-4":"External sweep"}
  ranks=[]
  rank1_idname=[]
  reqrd=[]
@@ -265,6 +263,60 @@ def octant_range_names(mod=5000):
   oct_7=0
   oct_8=0
   
+ from openpyxl import Workbook 
+ book=Workbook()
+ spreadsheet= book.active    
+ rows=[] 
+ rows.append(["Time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant","","OctantID","+1","-1","+2","-2","+3","-3","+4","-4","Rank of 1","Rank of -1","Rank of 2","Rank of -2","Rank of 3","Rank of -3","Rank of 4","Rank of -4","Rank1 Octant ID","Rank1 Octant Name"])
+ j=0
+ a=0
+ b=0
+ for x in range(num_1-2):
+  if(x==0):
+   rows.append([d1[x],a1[x],b1[x],c1[x],a_mean_value,b_mean_value,c_mean_value,a2[x],b2[x],c2[x],octants[x],"","Overall count",ct1,ct2,ct3,ct4,ct5,ct6,ct7,ct8,ranks[x][0],ranks[x][1],ranks[x][2],ranks[x][3],ranks[x][4],ranks[x][5],ranks[x][6],ranks[x][7],rank1_idname[x][0],rank1_idname[x][1]])
+  elif(x==1):
+   y="mod "+str(mod)		
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"User input",y,"","","","","","","",""])
+  elif(x>=2 and x<2+k):
+   if(x==1+k):# it will work only if x=1+k
+    z=j*mod 	
+    y=(j+1)*mod
+    y=str(z)+"-"+str(num_1-2)		 
+    rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"",y,octants_ct1[x-2],octants_ct2[x-2],octants_ct3[x-2],octants_ct4[x-2],octants_ct5[x-2],octants_ct6[x-2],octants_ct7[x-2],octants_ct8[x-2],ranks[x-1][0],ranks[x-1][1],ranks[x-1][2],ranks[x-1][3],ranks[x-1][4],ranks[x-1][5],ranks[x-1][6],ranks[x-1][7],rank1_idname[x-1][0],rank1_idname[x-1][1]])	 
+    j=j+1
+   else:
+    z=j*mod	
+    y=(j+1)*mod-1
+    y=str(z)+"-"+str(y)		 
+    rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"",y,octants_ct1[x-2],octants_ct2[x-2],octants_ct3[x-2],octants_ct4[x-2],octants_ct5[x-2],octants_ct6[x-2],octants_ct7[x-2],octants_ct8[x-2],ranks[x-1][0],ranks[x-1][1],ranks[x-1][2],ranks[x-1][3],ranks[x-1][4],ranks[x-1][5],ranks[x-1][6],ranks[x-1][7],rank1_idname[x-1][0],rank1_idname[x-1][1]])	 
+    j=j+1
+  elif x==k+5:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","Octant ID","Octant Name","Count of Rank 1 Mod values","","","",""])
+  elif x==k+6:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","1","Internal Outward Interaction",sn_1,"","","",""])
+  elif x==k+7:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","-1","External Outward Interaction",sn_2,"","","",""])
+  elif x==k+8:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","2","External Ejection",sn_3,"","","",""])
+  elif x==k+9:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","-2","Internal Ejection",sn_4,"","","",""])
+  elif x==k+10:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","3","External inward Interaction",sn_5,"","","",""])
+  elif x==k+11:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","-3","Internal inward Interaction",sn_6,"","","",""])
+  elif x==k+12:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","4","Internal Sweep",sn_7,"","","",""]) 
+  elif x==k+13:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","-4","External Sweep",sn_8,"","","",""])     
+  else:
+   rows.append([d1[x],a1[x],b1[x],c1[x],"","","",a2[x],b2[x],c2[x],octants[x],"","","","","","","","",""])
+
+ for i in rows:
+  spreadsheet.append(i)
+ book.save("octant_output_ranking_excel.xlsx")
+      
+ octant_name_id_mapping = {"1":"Internal outward interaction", "-1":"External outward interaction", "2":"External Ejection", "-2":"Internal Ejection", "3":"External inward interaction", "-3":"Internal inward interaction", "4":"Internal sweep", "-4":"External sweep"}
+
 
 
 
