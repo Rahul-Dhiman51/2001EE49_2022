@@ -137,6 +137,69 @@ def octant_range_names(mod=5000):
   rank_idname=[-4,"External Sweep"]
   rank1_idname.append(rank_idname) 
 
+ # Making lists of different octants in mod range
+
+ octants_ct1=[]      
+ octants_ct2=[] 
+ octants_ct3=[]     
+ octants_ct4=[]
+ octants_ct5=[]
+ octants_ct6=[] 
+ octants_ct7=[]
+ octants_ct8=[]
+
+  #count of octants in mod range...
+
+ oct_1=0 
+ oct_2=0
+ oct_3=0
+ oct_4=0
+ oct_5=0
+ oct_6=0
+ oct_7=0
+ oct_8=0
+
+ k= int((num_1-2)/mod) +1     # k gives the value of interval.
+ sn_1=0
+ sn_2=0
+ sn_3=0
+ sn_4=0
+ sn_5=0
+ sn_6=0
+ sn_7=0
+ sn_8=0
+  
+ for i in range(k):
+  y=mod*i
+  for j in range(mod):	
+   if(j+y<num_1-1):	                                    
+    if (octants[j+y]==1):
+     oct_1=oct_1+1 
+    elif(octants[j+y]==-1):
+     oct_2=oct_2+1
+    elif(octants[j+y]==2):
+     oct_3=oct_3+1
+    elif(octants[j+y]==-2):
+     oct_4=oct_4+1
+    elif(octants[j+y]==3):
+     oct_5=oct_5+1
+    elif(octants[j+y]==-3):
+     oct_6=oct_6+1    
+    elif(octants[j+y]==4):
+     oct_7=oct_7+1
+    elif(octants[j+y]==-4):
+     oct_8=oct_8+1
+
+  octants_ct1.append(oct_1)
+  octants_ct2.append(oct_2) 
+  octants_ct3.append(oct_3)
+  octants_ct4.append(oct_4)
+  octants_ct5.append(oct_5)
+  octants_ct6.append(oct_6)
+  octants_ct7.append(oct_7)
+  octants_ct8.append(oct_8)
+
+
 
 
 mod=5000 
