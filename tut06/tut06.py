@@ -8,16 +8,16 @@ def attendance_report():
  import os
  import numpy as np
  os.system('cls')
- roll_numbers=[]
- students_name=[]
+ roll_numbers=[]  # list of registered roll no.
+ students_name=[] # list of registered name
 
  with open('input_registered_students.csv', 'r') as f:
   reader = csv.reader(f)
   r=0
   for row in reader:
    if r!=0:
-    roll_numbers.append(row[0])
-    students_name.append(row[1])
+    roll_numbers.append(row[0])   #storing roll no. in list
+    students_name.append(row[1])  #storing students names in list
    r=r+1
   r=r-1
  lec_dates =["28-07","01-08","04-08","08-08","11-08","15-08","18-08","22-08","25-08","29-08","01-09","05-09","08-09","12-09","15-09","26-09","29-09"]
@@ -34,9 +34,9 @@ def attendance_report():
    sinle_data=[]
    for j in lec_dates:
     part_date_single_data=[]
-    ct1=0
-    ct2=0
-    ct3=0
+    ct1=0   # count for real attendance
+    ct2=0   # count fot duplicate attendance
+    ct3=0   # count for fake attendance
     with open('input_attendance.csv', 'r') as f:
      reader = csv.reader(f)
      for row in reader:
@@ -60,27 +60,27 @@ def attendance_report():
 #  print(all_data[0])
  if os.path.exists("output"):
   for f in os.listdir("output"):
-    os.remove(os.path.join("output",f))
+    os.remove(os.path.join("output",f))   # emptying pre-existing files in output folder
 
  os.chdir("output")
  from openpyxl import Workbook
  for i in range(0,r): 
   book=Workbook()
   spreadsheet= book.active    
-  rows=[] 
+  rows=[]   # creating list of rows of particular student of all dates
   rows.append(["Date","Roll No.","Name","Total attendance count","Real","Duplicate","Invalid","absent"])
   rows.append(["",roll_numbers[i],students_name[i],"","","","",""])
   for q in range(0,num_of_days):
    rows.append([lec_dates[q],"","",all_data[i][q][0],all_data[i][q][1],all_data[i][q][2],all_data[i][q][3],all_data[i][q][4]])
   for w in rows:
    spreadsheet.append(w)
-  book.save( roll_numbers[i] + ".xlsx")
+  book.save( roll_numbers[i] + ".xlsx")   # saving files of each students as per their roll numbers
 
-  dic={0:"A",1:"P"}
+  dic={0:"A",1:"P"}   # dictionary for present and absent
   book=Workbook()
   spreadsheet= book.active    
   rows=[]
-  l=["Roll No.","Name"]
+  l=["Roll No.","Name"]   # for 1st row
   for i in lec_dates:
    l.append(i)
   l.append("Total Lecture taken")
@@ -88,7 +88,7 @@ def attendance_report():
   l.append("% Attendance")
   rows.append(l) 
 
-  l=["(Sorted by roll no.)","","Atleast one real P"]
+  l=["(Sorted by roll no.)","","Atleast one real P"]    # for 2nd row
   for i in range(0,num_of_days-1):
    l.append("")
   l.append("(=Total Mon+Thur dynamic count")
@@ -111,8 +111,10 @@ def attendance_report():
 
   for w in rows:
    spreadsheet.append(w)
-  book.save( "Attendance_report_consolidated" + ".xlsx") 
+  book.save( "Attendance_report_consolidated" + ".xlsx")  # making a full report of all the students
             
+            # code to mail the final report
+
 def send_mail():
     import smtplib, email, ssl
 
@@ -122,7 +124,7 @@ def send_mail():
     from email.mime.text import MIMEText
 
     fromaddr = input("Enter Mail Id: ")
-    toaddr = "sainiabhishek302001@gmail.com"
+    toaddr = "cs3842022@gmail.com"
     Password_ = input("Enter Password: ")
 
     # instance of MIMEMultipart
@@ -178,7 +180,6 @@ def send_mail():
 
     # terminating the session
     s.quit()
-
 
 attendance_report()
 send_mail()
