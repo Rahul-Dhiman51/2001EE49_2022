@@ -45,6 +45,19 @@ def attendance_report():
        ct2=ct2+1
       elif j==row[0][0:5] and row[1][0:8]==x :
        ct3=ct3+1
+     part_date_single_data.append(ct1+ct2+ct3)  
+     part_date_single_data.append(ct1)
+     part_date_single_data.append(ct2)
+     part_date_single_data.append(ct3)
+     if ct1==0:
+      part_date_single_data.append(1)
+     else:
+      part_date_single_data.append(0) 
+    sinle_data.append(part_date_single_data)
+   all_data.append(sinle_data)
+ 
+ print(all_data[0])
+
 
 attendance_report()
 
