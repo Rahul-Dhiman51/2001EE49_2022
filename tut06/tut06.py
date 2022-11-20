@@ -58,10 +58,62 @@ def attendance_report():
  
  print(all_data[0])
 
+ if os.path.exists("output"):
+  for f in os.listdir("output"):
+    os.remove(os.path.join("output",f))
+
+ os.chdir("output")
+ from openpyxl import Workbook
+ for i in range(0,r): 
+  book=Workbook()
+  spreadsheet= book.active    
+  rows=[] 
+  rows.append(["Date","Roll No.","Name","Total attendance count","Real","Duplicate","Invalid","absent"])
+  rows.append(["",roll_numbers[i],students_name[i],"","","","",""])
+  for q in range(0,num_of_days):
+   rows.append([lec_dates[q],"","",all_data[i][q][0],all_data[i][q][1],all_data[i][q][2],all_data[i][q][3],all_data[i][q][4]])
+  for w in rows:
+   spreadsheet.append(w)
+  book.save( roll_numbers[i] + ".xlsx")
+
+  dic={0:"A",1:"P"}
+  book=Workbook()
+  spreadsheet= book.active    
+  rows=[]
+  l=["Roll No.","Name"]
+  for i in lec_dates:
+   l.append(i)
+  l.append("Total Lecture taken")
+  l.append("Total Real")
+  l.append("% Attendance")
+  rows.append(l) 
+
+  l=["(Sorted by roll no.)","","Atleast one real P"]
+  for i in range(0,num_of_days-1):
+   l.append("")
+  l.append("(=Total Mon+Thur dynamic count")
+  l.append("")
+  l.append("Real/Actual Lecture taken")
+  rows.append(l) 
+
+  for i in range(0,r): 
+   l=[roll_numbers[i],students_name[i]]
+   sinle_data=0
+   for q in range(0,num_of_days):
+    l.append(dic[all_data[i][q][1]])
+    if dic[all_data[i][q][1]]=="P":
+     sinle_data=sinle_data+1
+   l.append(num_of_days)
+   l.append(sinle_data)
+   l=(sinle_data/num_of_days)*100
+   l.append("{:.2f}".format(l))
+   rows.append(l)
+
+  for w in rows:
+   spreadsheet.append(w)
+  book.save( "Attendance_report_consolidated" + ".xlsx") 
 
 attendance_report()
-
-
 
 
 #This shall be the last lines of the code.
