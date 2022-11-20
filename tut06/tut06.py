@@ -1,18 +1,28 @@
-
-
 from datetime import datetime
+from unicodedata import name
 start_time = datetime.now()
 
 def attendance_report():
-###Code
+        ##code starts from here
+ import csv
+ import os
+ import numpy as np
+ os.system('cls')
+ roll_numbers=[]
+ students_name=[]
 
-from platform import python_version
-ver = python_version()
+ with open('input_registered_students.csv', 'r') as f:
+  reader = csv.reader(f)
+  r=0
+  for row in reader:
+   if r!=0:
+    roll_numbers.append(row[0])
+    students_name.append(row[1])
+   r=r+1
+  r=r-1
+ lec_dates =["28/07","01/08","04/08","08/08","11/08","15/08","18/08","22/08","25/08","29/08","01/09","05/09","08/09","12/09","15/09","26/09","29/09"]
+ num_of_days=len(lec_dates)
 
-if ver == "3.8.10":
-    print("Correct Version Installed")
-else:
-    print("Please install 3.8.10. Instruction are present in the GitHub Repo/Webmail. Url: https://pastebin.com/nvibxmjw")
 
 
 attendance_report()
