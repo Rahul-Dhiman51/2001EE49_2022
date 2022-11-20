@@ -57,7 +57,7 @@ def attendance_report():
     sinle_data.append(part_date_single_data)
    all_data.append(sinle_data)
  
- print(all_data[0])
+#  print(all_data[0])
  if os.path.exists("output"):
   for f in os.listdir("output"):
     os.remove(os.path.join("output",f))
@@ -113,8 +113,75 @@ def attendance_report():
    spreadsheet.append(w)
   book.save( "Attendance_report_consolidated" + ".xlsx") 
             
+def send_mail():
+    import smtplib, email, ssl
+
+    from email import encoders
+    from email.mime.base import MIMEBase
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+
+    fromaddr = input("Enter Mail Id: ")
+    toaddr = "sainiabhishek302001@gmail.com"
+    Password_ = input("Enter Password: ")
+
+    # instance of MIMEMultipart
+    msg = MIMEMultipart()
+
+    # storing the senders email address
+    msg['From'] = fromaddr
+
+    # storing the receivers email address
+    msg['To'] = toaddr
+
+    # storing the subject
+    msg['Subject'] = "Attendance Report Consolidated"
+
+    # string to store the body of the mail
+    body = "Dear Sir,\n\nPlease find below attached file.\n\nWarm Regards\nRahul Dhiman\n2001EE49"
+
+    # attach the body with the msg instance
+    msg.attach(MIMEText(body, 'plain'))
+
+    # open the file to be sent
+    filename = 'attendance_report_consolidated.xlsx'
+    attachment = open("attendance_report_consolidated.xlsx", "rb")
+
+    # instance of MIMEBase and named as p
+    p = MIMEBase('application', 'octet-stream')
+
+    # To change the payload into encoded form
+    p.set_payload((attachment).read())
+
+    # encode into base64
+    encoders.encode_base64(p)
+
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+
+    # attach the instance 'p' to instance 'msg'
+    msg.attach(p)
+
+    # creates SMTP session
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+
+    # start TLS for security
+    s.starttls()
+
+    # Authentication
+    s.login(fromaddr, Password_)
+
+    # Converts the Multipart msg into a string
+    text = msg.as_string()
+
+    # sending the mail
+    s.sendmail(fromaddr, toaddr, text)
+
+    # terminating the session
+    s.quit()
+
 
 attendance_report()
+send_mail()
 
 #This shall be the last lines of the code.
 end_time = datetime.now()
