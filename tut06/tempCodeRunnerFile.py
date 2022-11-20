@@ -20,9 +20,8 @@ def attendance_report():
     students_name.append(row[1])
    r=r+1
   r=r-1
- lec_dates =["28-07","01-08","04-08","08-08","11-08","15-08","18-08","22-08","25-08","29-08","01-09","05-09","08-09","12-09","15-09","26-09","29-09"]
+ lec_dates =["28/07","01/08","04/08","08/08","11/08","15/08","18/08","22/08","25/08","29/08","01/09","05/09","08/09","12/09","15/09","26/09","29/09"]
  num_of_days=len(lec_dates)
-
 
  with open('input_attendance.csv', 'r') as f:
   reader = csv.reader(f) 
@@ -58,6 +57,7 @@ def attendance_report():
    all_data.append(sinle_data)
  
  print(all_data[0])
+
  if os.path.exists("output"):
   for f in os.listdir("output"):
     os.remove(os.path.join("output",f))
@@ -112,9 +112,9 @@ def attendance_report():
   for w in rows:
    spreadsheet.append(w)
   book.save( "Attendance_report_consolidated" + ".xlsx") 
-            
 
 attendance_report()
+
 
 #This shall be the last lines of the code.
 end_time = datetime.now()
