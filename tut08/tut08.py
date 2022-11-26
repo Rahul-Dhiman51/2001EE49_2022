@@ -1,24 +1,25 @@
-
+import openpyxl
+import pandas as pd
+import os
 from datetime import datetime
 start_time = datetime.now()
+india_innings = open("india_inns2.txt","r+")    #opening india innings file
+pakistan_innings = open("pak_inns1.txt","r+")   #opening pakistan innings file
+teamss = open("teams.txt","r+")
+input_teams = teamss.readlines()
 
-#Help
-def scorecard():
-	pass
+pakistan_team = input_teams[0]
+pakistan_players = pakistan_team[23:-1:].split(",")
 
-
-###Code
-
-from platform import python_version
-ver = python_version()
-
-if ver == "3.8.10":
-	print("Correct Version Installed")
-else:
-	print("Please install 3.8.10. Instruction are present in the GitHub Repo/Webmail. Url: https://pastebin.com/nvibxmjw")
+india_team = input_teams[2]
+india_players = india_team[20:-1:].split(",")
 
 
-scorecard()
+first_india=india_innings.readlines()   #reading india innings file
+for i in first_india:
+    if i=='\n':
+        first_india.remove(i)
+
 
 
 
