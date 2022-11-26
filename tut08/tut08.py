@@ -20,7 +20,31 @@ for i in first_india:
     if i=='\n':
         first_india.remove(i)
 
+first_pakistan=pakistan_innings.readlines()     #reading pakistan innings file
+for i in first_pakistan:
+    if i=='\n':
+        first_pakistan.remove(i)
 
+wb = openpyxl.Workbook()
+spreadsheet = wb.active
+
+    #   batting [runs,ball,4s,6s,sr]
+    #   bowling [over,medan,runs,Wickets, NB, WD, ECO]
+india_fall_of_wickets=0
+pakistan_fall_of_wickets=0
+out_pakistan_bat={}
+india_bowlers={}
+india_bats={}
+
+pakistan_bats={}
+pakistan_bowlers={}
+pakistan_byes=0
+pakistan_bowlers_total=0
+for k in first_pakistan:
+    t=k.index(".")
+    overs_pakistan=k[0:t+2]
+    temp=k[t+2::].split(",")
+    current_ball=temp[0].split("to")
 
 
 
