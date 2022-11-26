@@ -258,6 +258,142 @@ for value in pakistan_bowlers.values():
     else:
         value[-1] = round((value[2]/value[0]) ,1)
 
+
+    # pakistan batting
+
+names_pakistan_batters=[]
+for key in pakistan_bats.keys():
+    names_pakistan_batters.append(key)
+
+
+for i in range(len(pakistan_bats)):
+    spreadsheet.cell(5+i,1).value = names_pakistan_batters[i]
+    spreadsheet.cell(5+i,5).value = pakistan_bats[names_pakistan_batters[i]][0]
+    spreadsheet.cell(5+i,6).value = pakistan_bats[names_pakistan_batters[i]][1]
+    spreadsheet.cell(5+i,7).value = pakistan_bats[names_pakistan_batters[i]][2]
+    spreadsheet.cell(5+i,8).value = pakistan_bats[names_pakistan_batters[i]][3]
+    spreadsheet.cell(5+i,9).value = pakistan_bats[names_pakistan_batters[i]][4]
+    if names_pakistan_batters[i] not in out_pakistan_bat:
+        spreadsheet.cell(5+i,3).value = "not out"
+    else:
+        spreadsheet.cell(5+i,3).value=out_pakistan_bat[names_pakistan_batters[i]]
+
+spreadsheet.cell(3,1).value = "BATTERS"
+spreadsheet["E3"] = "RUNS"
+spreadsheet["F3"] = "BALLS"
+spreadsheet["G3"] = " 4s "
+spreadsheet["H3"] = " 6s "
+spreadsheet["I3"] = "  SR  "
+
+    # india bowling
+
+spreadsheet["A18"] = "BOWLER"
+spreadsheet["C18"] = "OVER"
+spreadsheet["D18"] = "MAIDEN"
+spreadsheet["E18"] = "RUNS"
+spreadsheet["F18"] = "WICKET"
+spreadsheet["G18"] = "NO-BALL"
+spreadsheet["H18"] = "WIDE"
+spreadsheet["I18"] = "ECONOMY"
+
+names_pakistan_bowlers=[]
+for key in pakistan_bowlers.keys():
+    names_pakistan_bowlers.append(key)
+
+for i in range(len(pakistan_bowlers)):
+    spreadsheet.cell(42+i,1).value = names_pakistan_bowlers[i]
+    spreadsheet.cell(42+i,3).value = pakistan_bowlers[names_pakistan_bowlers[i]][0]
+    spreadsheet.cell(42+i,4).value = pakistan_bowlers[names_pakistan_bowlers[i]][1]
+    spreadsheet.cell(42+i,5).value = pakistan_bowlers[names_pakistan_bowlers[i]][2]
+    spreadsheet.cell(42+i,6).value = pakistan_bowlers[names_pakistan_bowlers[i]][3]
+    spreadsheet.cell(42+i,7).value = pakistan_bowlers[names_pakistan_bowlers[i]][4]
+    spreadsheet.cell(42+i,8).value = pakistan_bowlers[names_pakistan_bowlers[i]][5]
+    spreadsheet.cell(42+i,9).value = pakistan_bowlers[names_pakistan_bowlers[i]][6]
+    pakistan_bowlers_total+=pakistan_bowlers[names_pakistan_bowlers[i]][2]
+    india_fall_of_wickets+=pakistan_bowlers[names_pakistan_bowlers[i]][3]
+
+    # india batting
+spreadsheet.cell(11+len(pakistan_bats)+len(pakistan_bowlers),1).value = "# INDIA"
+spreadsheet.cell(11+len(pakistan_bats)+len(pakistan_bowlers),2).value = " INNINGS"
+
+names_india_batters=[]
+for key in india_bats.keys():
+    names_india_batters.append(key)
+
+
+for i in range(len(india_bats)):
+    spreadsheet.cell(31+i,1).value = names_india_batters[i]
+    spreadsheet.cell(31+i,5).value = india_bats[names_india_batters[i]][0]
+    spreadsheet.cell(31+i,6).value = india_bats[names_india_batters[i]][1]
+    spreadsheet.cell(31+i,7).value = india_bats[names_india_batters[i]][2]
+    spreadsheet.cell(31+i,8).value = india_bats[names_india_batters[i]][3]
+    spreadsheet.cell(31+i,9).value = india_bats[names_india_batters[i]][4]
+
+    if names_india_batters[i] not in out_india_bat:
+        spreadsheet.cell(31+i,3).value = "not out"
+    else:
+        spreadsheet.cell(31+i,3).value=out_india_bat[names_india_batters[i]]
+
+spreadsheet["A29"] = "BATTERS"
+spreadsheet["E29"] = "RUNS"
+spreadsheet["F29"] = "BALLS"
+spreadsheet["G29"] = " 4s "
+spreadsheet["H29"] = " 6s "
+spreadsheet["I29"] = "  SR  "
+
+    # india bowling
+
+spreadsheet["A40"] = "BOWLER"
+spreadsheet["C40"] = "OVER"
+spreadsheet["D40"] = "MAIDEN"
+spreadsheet["E40"] = "RUNS"
+spreadsheet["F40"] = "WICKET"
+spreadsheet["G40"] = "NO-BALL"
+spreadsheet["H40"] = "WIDE"
+spreadsheet["I40"] = "ECONOMY"
+
+names_india_bowlers=[]
+for key in india_bowlers.keys():
+    names_india_bowlers.append(key)
+
+for i in range(len(india_bowlers)):
+
+    spreadsheet.cell(20+i,1).value = names_india_bowlers[i]
+    spreadsheet.cell(20+i,3).value = india_bowlers[names_india_bowlers[i]][0]
+    spreadsheet.cell(20+i,4).value = india_bowlers[names_india_bowlers[i]][1]
+    spreadsheet.cell(20+i,5).value = india_bowlers[names_india_bowlers[i]][2]
+    spreadsheet.cell(20+i,6).value = india_bowlers[names_india_bowlers[i]][3]
+    spreadsheet.cell(20+i,7).value = india_bowlers[names_india_bowlers[i]][4]
+    spreadsheet.cell(20+i,8).value = india_bowlers[names_india_bowlers[i]][5]
+    spreadsheet.cell(20+i,9).value = india_bowlers[names_india_bowlers[i]][6]
+    india_bowlers_total+=india_bowlers[names_india_bowlers[i]][2]
+    pakistan_fall_of_wickets+=india_bowlers[names_india_bowlers[i]][3]
+
+india_total_score=india_bowlers_total+pakistan_byes+1
+pakistan_total_score = pakistan_bowlers_total+india_byes-1
+
+
+spreadsheet["E27"] = " "+str(india_total_score) +" - " + str(india_fall_of_wickets)
+spreadsheet["F27"] = str(overs_india)
+Eone=" "+str(pakistan_total_score) +" - " + str(pakistan_fall_of_wickets)
+Fone = str(overs_pakistan)
+
+wb.save("Scoreboard.xlsx")
+
+df = pd.read_excel('Scoreboard.xlsx')
+
+df = df.set_axis(['PAKISTAN', ' INNINGS'] + [" "," ",Eone,Fone," "," "," "], axis='columns')
+
+df.to_csv('Scorecard.csv',index=False)
+
+import os
+try:
+    os.path.exists("Scoreboard.xlsx") 
+    os.remove("Scoreboard.xlsx")        # deleting output excel
+except:
+    print("Extra created file does not exist")
+
+
 #This shall be the last lines of the code.
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
