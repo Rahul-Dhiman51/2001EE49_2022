@@ -47,7 +47,87 @@ for k in first_pakistan:
     current_ball=temp[0].split("to")
 
 
+	if f"{current_ball[0].strip()}" not in india_bowlers.keys() :
+        india_bowlers[f"{current_ball[0].strip()}"]=[1,0,0,0,0,0,0]     #   [over0, medan1, runs2, Wickets3, NB4, WD5, ECO6]
+    elif "wide" in temp[1]:
+        pass
+    elif "byes" in temp[1]:
+        if "FOUR" in temp[2]:
+            pakistan_byes+=4
+            india_bowlers[f"{current_ball[0].strip()}"][0]+=1
+        elif "1 run" in temp[2]:
+            pakistan_byes+=1
+            india_bowlers[f"{current_ball[0].strip()}"][0]+=1
+        elif "2 runs" in temp[2]:
+            pakistan_byes+=2
+            india_bowlers[f"{current_ball[0].strip()}"][0]+=1
+        elif "3 runs" in temp[2]:
+            pakistan_byes+=3
+            india_bowlers[f"{current_ball[0].strip()}"][0]+=1
+        elif "4 runs" in temp[2]:
+            pakistan_byes+=4
+            india_bowlers[f"{current_ball[0].strip()}"][0]+=1
+        elif "5 runs" in temp[2]:
+            pakistan_byes+=5
+            india_bowlers[f"{current_ball[0].strip()}"][0]+=1
 
+    else:
+        india_bowlers[f"{current_ball[0].strip()}"][0]+=1
+    
+    if f"{current_ball[1].strip()}" not in pakistan_bats.keys() and temp[1]!="wide":
+        pakistan_bats[f"{current_ball[1].strip()}"]=[0,1,0,0,0]     #   [runs, ball, 4s, 6s, sr]
+    elif "wide" in temp[1] :
+        pass
+    else:
+        pakistan_bats[f"{current_ball[1].strip()}"][1]+=1
+    
+
+    if "out" in temp[1]:
+        india_bowlers[f"{current_ball[0].strip()}"][3]+=1
+        if "Bowled" in temp[1].split("!!")[0]:
+            out_pakistan_bat[f"{current_ball[1].strip()}"]=("b" + current_ball[0])
+        elif "Caught" in temp[1].split("!!")[0]:
+            w=(temp[1].split("!!")[0]).split("by")
+            out_pakistan_bat[f"{current_ball[1].strip()}"]=("c" + w[1] +" b " + current_ball[0])
+        elif "Lbw" in temp[1].split("!!")[0]:
+            out_pakistan_bat[f"{current_ball[1].strip()}"]=("lbw  b "+current_ball[0])
+
+    
+
+    if "no run" in temp[1] or "out" in temp[1] :
+        india_bowlers[f"{current_ball[0].strip()}"][2]+=0
+        pakistan_bats[f"{current_ball[1].strip()}"][0]+=0
+    elif "1 run" in temp[1]:
+        india_bowlers[f"{current_ball[0].strip()}"][2]+=1
+        pakistan_bats[f"{current_ball[1].strip()}"][0]+=1
+    elif "2 runs" in temp[1]:
+        india_bowlers[f"{current_ball[0].strip()}"][2]+=2
+        pakistan_bats[f"{current_ball[1].strip()}"][0]+=2
+    elif "3 runs" in temp[1]:
+        india_bowlers[f"{current_ball[0].strip()}"][2]+=3
+        pakistan_bats[f"{current_ball[1].strip()}"][0]+=3
+    elif "4 runs" in temp[1]:
+        india_bowlers[f"{current_ball[0].strip()}"][2]+=4
+        pakistan_bats[f"{current_ball[1].strip()}"][0]+=4
+    elif "FOUR" in temp[1]:
+        india_bowlers[f"{current_ball[0].strip()}"][2]+=4
+        pakistan_bats[f"{current_ball[1].strip()}"][0]+=4
+        pakistan_bats[f"{current_ball[1].strip()}"][2]+=1
+    elif "SIX" in temp[1]:
+        india_bowlers[f"{current_ball[0].strip()}"][2]+=6
+        pakistan_bats[f"{current_ball[1].strip()}"][0]+=6
+        pakistan_bats[f"{current_ball[1].strip()}"][3]+=1
+    elif "wide" in temp[1]:
+        if "wides" in temp[1]:
+
+            india_bowlers[f"{current_ball[0].strip()}"][2]+=int(temp[1][1])
+            india_bowlers[f"{current_ball[0].strip()}"][5]+=int(temp[1][1])
+        else:
+            india_bowlers[f"{current_ball[0].strip()}"][2]+=1
+            india_bowlers[f"{current_ball[0].strip()}"][5]+=1
+
+for value in pakistan_bats.values():
+    value[-1]=round((value[0]/value[1])*100 , 2)
 
 
 #This shall be the last lines of the code.
