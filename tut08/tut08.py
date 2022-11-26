@@ -46,8 +46,7 @@ for k in first_pakistan:
     temp=k[t+2::].split(",")
     current_ball=temp[0].split("to")
 
-
-	if f"{current_ball[0].strip()}" not in india_bowlers.keys() :
+    if f"{current_ball[0].strip()}" not in india_bowlers.keys() :
         india_bowlers[f"{current_ball[0].strip()}"]=[1,0,0,0,0,0,0]     #   [over0, medan1, runs2, Wickets3, NB4, WD5, ECO6]
     elif "wide" in temp[1]:
         pass
@@ -70,7 +69,6 @@ for k in first_pakistan:
         elif "5 runs" in temp[2]:
             pakistan_byes+=5
             india_bowlers[f"{current_ball[0].strip()}"][0]+=1
-
     else:
         india_bowlers[f"{current_ball[0].strip()}"][0]+=1
     
