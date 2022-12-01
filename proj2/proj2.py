@@ -920,3 +920,120 @@ def octant_analysis_mutiple(mod,path):
 					sheet.cell(row=b,column=51).border=bor
 					b+=1
 			
+		def octant_transition_count(mod=5000):
+			j=1
+			n=len(octant)
+			sheet.cell(row=j,column=35).value='Overall Transition Count' 
+			sheet.cell(row=j+3,column=34).value='From'
+			sheet.cell(row=j+1,column=36).value='To'
+			j+=2
+			
+			oct_range_matrix = [ [0]*9 for i in range(9)]                    
+			
+			# Storing header row and header column in the matrix
+			for i in range(0,4):                                        
+				oct_range_matrix[0][2*i+1]=(i+1)
+				oct_range_matrix[0][2*(i+1)]=-(i+1)
+			for i in range(0,9):
+				oct_range_matrix[i][0]=oct_range_matrix[0][i]
+			oct_range_matrix[0][0]='Octant #'
+
+			 # Dictionary for mapping.....
+			dict_mapping={}                                             
+			for i in range(0,4):
+				dict_mapping[i+1]=2*i+1
+				dict_mapping[-(i+1)]=2*(i+1)
+
+			  # Using transition values for finding the row and column....
+			def find_row_col(x,y):                     
+				head_comp=[dict_mapping[x],dict_mapping[y]]
+				return head_comp
+			
+			def find_max_ele(head_comp):
+				max_temp=head_comp.copy()
+				max_temp.pop(0)
+				large=0
+				for i in max_temp:
+					if(large<i):
+						large=i
+				return large
+
+			back=octant[0]
+
+			# Appending overall transition matrix....                                             
+			for i in range(1,n):                       
+				head_comp=find_row_col(back,octant[i])                        
+				oct_range_matrix[head_comp[0]][head_comp[1]]+=1
+				back=octant[i]
+
+			CodeYelow = "00FFFF00"
+
+			# In worksheet writing overall transition matrix.....
+			for i in range(9):                                  
+				temp_head_comp=oct_range_matrix[i]
+				large=find_max_ele(temp_head_comp)
+				for b in range(13,22):
+					sheet.cell(row=j+i,column=b+22).value=oct_range_matrix[i][b-13]
+					sheet.cell(row=j+i,column=b+22).border=bor
+					if(i>0 and oct_range_matrix[i][b-13]==large):
+						sheet.cell(row=j+i,column=b+22).fill=PatternFill(start_color=CodeYelow,end_color=CodeYelow,fill_type="solid")
+					if(i!=0 and b!=13):
+						oct_range_matrix[i][b-13]=0
+
+			# temp-> No. of mod transition tables.....
+			max_temp=n//mod+1                                              
+			j+=1
+
+			# For each mod transition iterating one time.....
+			for t in range(max_temp):                                   
+				j+=11
+				nam1=''
+
+				# Appending table in worksheet......
+				sheet.cell(row=j,column=35).value='Mod Transition Count'     
+				sheet.cell(row=j+3,column=34).value='From'
+				sheet.cell(row=j+1,column=36).value='To'
+				nam1=str(t*mod)+'-'
+				if((t+1)*mod-1>n-1):
+					nam1+=str(n-1)
+				else:
+					nam1+=str((t+1)*mod-1)   
+				sheet.cell(row=j+1,column=35).value=nam1
+				j+=2
+
+				# Feeing transition values to the corresponding cells by incrementing.....
+				for i in range(t*mod,min(n-1,(t+1)*mod)):                 
+					head_comp=find_row_col(octant[i],octant[i+1])
+					oct_range_matrix[head_comp[0]][head_comp[1]]+=1
+
+				# In worksheet appending transition mod matrix...
+				for i in range(0,9):                                     
+					temp_head_comp=oct_range_matrix[i]
+					if(i>0):
+						large=find_max_ele(temp_head_comp)
+					for b in range(13,22):
+						sheet.cell(row=j+i,column=b+22).value=oct_range_matrix[i][b-13]
+						sheet.cell(row=j+i,column=b+22).border=bor
+						if(i>0 and oct_range_matrix[i][b-13]==large):
+							sheet.cell(row=j+i,column=b+22).fill=PatternFill(start_color=CodeYelow,end_color=CodeYelow,fill_type="solid")
+						if(i!=0 and b!=13):
+
+							# changing to default value of matrix for next mod iteration
+							oct_range_matrix[i][b-13]=0                           
+
+
+		octant_transition_count(mod)
+		range_name_oct(mod)
+		oct_long_subseq_count_with_rang()
+		file=file[:-5]
+		path_out='output/'+file+' cm_vel_octant_analysis_mod_'+str(mod)+'.xlsx'
+		wb.save(path_out)
+		data_1 = BytesIO()
+		wb.save(data_1)
+		filename = file +'cm_vel_octant_analysis_mod_'+str(mod)+'.xlsx'
+		st.text(filename)
+		st.download_button(label="Download File", file_name=filename   , data=data_1)
+	for file in os.listdir(path):
+		a = path+"\\"+file
+		workingFile(a,file,mod)
+
