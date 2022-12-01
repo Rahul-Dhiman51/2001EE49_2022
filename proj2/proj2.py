@@ -1037,3 +1037,26 @@ def octant_analysis_mutiple(mod,path):
 		a = path+"\\"+file
 		workingFile(a,file,mod)
 
+st.header("My Project 2 of CS384")
+val = st.number_input(label=" Please Enter Mod Value", min_value=1, step=1)
+file = st.file_uploader("Please choose the file", type=["xlsx"])
+if os.path.exists("output"):
+    pass
+
+else:
+	a = pathlib.Path(__file__).parent.parent.resolve()
+	b = os.path.join(a,"proj2") 
+	filename = os.path.join(b,"output") 
+	os.mkdir(filename)
+
+if st.button("Compute"):
+	a = pathlib.Path(__file__).parent.parent.resolve()
+	d = os.path.join(a,"proj2\output")
+	for f in os.listdir(d):
+		os.remove(os.path.join(d, f))
+	single_file_octant(val,file)
+
+
+direc = st.text_input(label="path of directiory")
+if st.button("Compute_1"):
+	octant_analysis_mutiple(val,direc)
