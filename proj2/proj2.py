@@ -1056,7 +1056,6 @@ if st.button("Compute"):
 		os.remove(os.path.join(d, f))
 	single_file_octant(val,file)
 
-
 direc = st.text_input(label="path of directiory")
 if st.button("Compute_1"):
 	octant_analysis_mutiple(val,direc)
