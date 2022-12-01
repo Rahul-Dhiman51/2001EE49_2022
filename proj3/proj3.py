@@ -880,6 +880,7 @@ if st.button('compute'):
                     name = add_front_name(name, i)
                     store()
 
+
             if tch == 3 or tch == 8:
                 if sch > 5:
                     iList = [1, 2, 3, 4, 5]
@@ -907,6 +908,7 @@ if st.button('compute'):
                     write_timestamp_to_file(name)
                     name = add_front_name(name, i)
                     store()
+
 
             if tch == 4 or tch == 8:
                 if sch > 5:
